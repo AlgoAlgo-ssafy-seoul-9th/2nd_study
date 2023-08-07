@@ -10,28 +10,38 @@
 
 <br/><br/>
 
-# [프로그래머스] 두 원 사이의 정수
+# [프로그래머스] 두 원 사이의 정수쌍
 
 <details>
 <summary>접기/펼치기</summary>
 <div markdown="1">
 
-## [성구](./두%20원%20사이의%정수/성구.py)
+## [성구](./두%20원%20사이의%정수쌍/성구.py)
 
 ```py
 ```
 
-## [민웅](./두%20원%20사이의%정수/민웅.py)
+## [민웅](./두%20원%20사이의%정수쌍/민웅.py)
+
+```py
+import math
+
+def solution(r1, r2):
+    ans = 0
+    for i in range(0, r1):
+        ans += math.floor(math.sqrt(r2**2 - i**2)) - math.floor(math.sqrt(r1**2 - i**2 - 1))
+    for i in range(r1, r2):
+        ans += math.floor(math.sqrt(r2**2 - i**2))
+    return 4 * ans
+
+```
+
+## [병국](./두%20원%20사이의%정수쌍/병국.py)
 
 ```py
 ```
 
-## [병국](./두%20원%20사이의%정수/병국.py)
-
-```py
-```
-
-## [상미](./두%20원%20사이의%정수/상미.py)
+## [상미](./두%20원%20사이의%정수쌍/상미.py)
 
 ```py
 ```
@@ -55,6 +65,24 @@
 ## [민웅](./시소%20짝궁/민웅.py)
 
 ```py
+def solution(weights):
+    answer = 0
+    num = {}
+    weights.sort(reverse=True)
+    for v in weights:
+        if v in num.keys():
+            answer += num[v]
+            num[v] += 1
+        else:
+            num[v] = 1
+        if v*3/2 in num.keys():
+            answer += num[v*3/2]
+        if v*4/3 in num.keys():
+            answer += num[v*4/3]
+        if v*2 in num.keys():
+            answer += num[v*2]
+
+    return answer
 ```
 
 ## [병국](./시소%20짝궁/병국.py)
